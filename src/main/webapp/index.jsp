@@ -22,17 +22,7 @@
             <p>Click button to see results on the same page</p>
             <input type="submit" name="submit" value="Submit">
         </form>
-         <% 
-        
-        Object obj = request.getAttribute("area");
-        String area = "Unknown";
-        if(obj != null) {
-            area = obj.toString();
-        }
-        
-        out.println("<p style='color:blue;font-weight:bold'>" + area + "</p>");
-        
-        %>
+                Your Result is:${area}
         <h1>Area of a Circle</h1>
         <img class="image" src="http://etc.usf.edu/clipart/42900/42943/circle-49_42943_lg.gif">
         <form id="circleForm" name="circleForm" method="POST" action="Calculator?action=circle"> 
@@ -40,17 +30,7 @@
             <p>Click button to see results</p>
             <input type="submit" name="submit" value="Submit">
         </form>
-         <% 
-        
-        Object obj2 = request.getAttribute("cirArea");
-        String cirArea = "Unknown";
-        if(obj2 != null) {
-            cirArea = obj2.toString();
-        }
-        
-        out.println("<p style='color:blue;font-weight:bold'>" + cirArea + "</p>");
-        
-        %>
+         Your Result is:${cirArea} 
         
         <h1>Area of a Hypotenuse</h1>
         <img class="image"src="http://www.calcunation.com/calculator/images/hypotenuse.jpg">
@@ -60,16 +40,6 @@
             <p>Click button to see results</p>
             <input type="submit" name="submit" value="Submit">
         </form>
-         <% 
-        
-        Object obj3 = request.getAttribute("hyp");
-        String hyp = "Unknown";
-        if(obj3 != null) {
-            hyp = obj3.toString();
-        }
-        
-        out.println("<p style='color:blue;font-weight:bold'>" + hyp + "</p>");
-        
-        %>
+         Your Result is: ${hyp}
     </body>
 </html>

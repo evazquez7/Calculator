@@ -5,9 +5,10 @@
  */
 package edu.wctc.eav.calculator.controller;
 
-import edu.wctc.eav.calculator.model.CalculatorService;
+import edu.wctc.eav.calculator.model.ListService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Emilio
  */
-@WebServlet(name = "Calculator", urlPatterns = {"/Calculator"})
-public class Calculator extends HttpServlet {
+@WebServlet(name = "ListController", urlPatterns = {"/ListController"})
+public class ListController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,40 +35,14 @@ public class Calculator extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            String action = request.getParameter("action");
-            CalculatorService cs = new CalculatorService();
-            double calc = 0;
-        /* TODO output your page here. You may use followitng sample code. */
-        switch (action) {
-            case "rectangular":
-                String width = request.getParameter("width");
-                String length = request.getParameter("length");
-                calc = cs.getRectCalc(width, length);
-                request.setAttribute("area", calc);
-                break;
-            case "circle":
-                String radius = request.getParameter("radius");
-                calc = cs.getCirCalc(radius);
-                request.setAttribute("cirArea", calc);
-                break;
-            case "hypotenuse":
-                String side1 = request.getParameter("side1");
-                String side2 = request.getParameter("side2");
-                calc = cs.getHypotenouse(side1, side2);
-                request.setAttribute("hyp", calc);
-                break;
-            default:
-                break;
-        }
-            
- 
-            
-            
-            RequestDispatcher view =
-                request.getRequestDispatcher("/index.jsp");
-        view.forward(request, response);
         
-        
+        ListService service = new ListService();
+       List<String> shoppingList = service.getShoppingList();
+       request.setAttribute("shoppingList", shoppingList);
+       
+        RequestDispatcher view
+               = request.getRequestDispatcher("/listTest.jsp");
+       view.forward(request, response);
         
     }
 

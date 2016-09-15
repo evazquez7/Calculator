@@ -12,14 +12,14 @@ package edu.wctc.eav.calculator.model;
 public class CalculatorService {
     
     
-    public Double getRectCalc(String Width, String Length) {
+    public final Double getRectCalc(String Width, String Length) {
         double width = Double.parseDouble(Width);
         double length = Double.parseDouble(Length);
         
         return length * width;
     }
     
-    public Double getCirCalc(String Radius){
+    public final Double getCirCalc(String Radius){
         double radius = Double.parseDouble(Radius);
         double pie = 3.14;
         double rSquared = radius*radius;
@@ -27,7 +27,7 @@ public class CalculatorService {
         
     }
     
-    public Double getHypotenouse (String Side1, String Side2){
+    public final  Double getHypotenouse (String Side1, String Side2){
         double side2 = Double.parseDouble(Side2);
         double side1 = Double.parseDouble(Side1); 
         
